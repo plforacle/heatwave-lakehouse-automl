@@ -42,26 +42,21 @@
              
         {
           "title": "Lab 6: (Bonus) Upload data to Object Storage for HeatWave Lakehouse",
-          "filename": "../../create-lakehouse-files/create-lakehouse-files.md"  
+          "filename": "../../create-lakehouse-black-friday-files/create-lakehouse-black-friday-files.md"  
         },
 
         {
           "title": "Lab 7: (Bonus) Load CSV data from OCI Object Store",
-          "filename": "../../load-csv-data/load-csv-data.md"  
+          "filename": "../../load-black-friday-data/load-black-friday-data.md"  
         },
 
         {
-          "title": "Lab 8: (Bonus) Load Parquet format data directly from Object Store ",
-          "filename": "../../load-parquet-data/load-parquet-data.md"
-        },
-
-        {
-          "title": "Lab 9: (Bonus) Create and Use HeatWave AutoML Model - black_friday  ",
+          "title": "Lab 8: (Bonus) Create and Use HeatWave AutoML Model - black_friday  ",
           "filename": "../../do-heatwave-ml/do-heatwave-ml.md"
         }, 
 
         {
-          "title": "Lab 10: Stop OCI Services",
+          "title": "Lab 9: Stop OCI Services",
           "filename": "../../stop-services/stop-services.md"
         },
 
