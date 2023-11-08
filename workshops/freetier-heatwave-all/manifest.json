@@ -73,20 +73,36 @@
         {
           "title": "Lab 12: (Bonus) Develop MySQL HeatWave and Lakehouse Apps with LAMP",
           "filename": "../../develop-lakehouse/develop-lakehouse.md"
-        }, 
+        },
+             
+        {
+          "title": "Lab 13: (Bonus) Upload data to Object Storage for HeatWave Lakehouse",
+          "filename": "../../create-lakehouse-black-friday-files/create-lakehouse-black-friday-files.md"  
+        },
 
         {
-          "title": "Lab 13: (Bonus) Create and Use HeatWave AutoML Model - black_friday  ",
+          "title": "Lab 14: (Bonus) Load CSV data from OCI Object Store",
+          "filename": "../../load-black-friday-data/load-black-friday-data.md"  
+        },
+
+        {
+          "title": "Lab 15: (Bonus) Create and Use HeatWave AutoML Model - black_friday  ",
+          "filename": "../../do-heatwave-ml/do-heatwave-ml.md"
+        }, 
+
+
+        {
+          "title": "Lab 16: (Bonus) Create and Use HeatWave AutoML Model - black_friday  ",
           "filename": "../../do-heatwave-ml/do-heatwave-ml.md"
         }, 
 
         {
-          "title": "Lab 14: (Bonus)  Develop MySQL HeatWave Apps with Oracle APEX",
+          "title": "Lab 17: (Bonus)  Develop MySQL HeatWave Apps with Oracle APEX",
           "filename": "../../apex-heatwave/apex-heatwave.md"
         }, 
         
         {
-          "title": "Lab 15: Stop OCI Services",
+          "title": "Lab 18: Stop OCI Services",
           "filename": "../../stop-services/stop-services.md"
         },
 

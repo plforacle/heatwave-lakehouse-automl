@@ -22,20 +22,19 @@ _Estimated Time:_ 10 minutes
 
 In this lab, you will be guided through the following task:
 
-- Download and unzip blac_friday files
-- Create ML Data
 - Train the machine learning model
 - Predict and Explain using the test table
 - Score your machine learning model to assess its reliability and unload the model
-
 
 ### Prerequisites
 
 - An Oracle Trial or Paid Cloud Account
 - Some Experience with MySQL Shell
-- Completed Lab 3
+- Complete the following labs
+    - Upload Train and Test  data to Object Storage for HeatWave Lakehouse
+    - Load CSV Train and Test from OCI Object Store
 
-## Task 1: Download and unzip  Sample files
+## Task 1: Train the machine learning model
 
 1. If not already connected with SSH, on Command Line, connect to the Compute instance using SSH ... be sure replace the  "private key file"  and the "new compute instance ip"
 
@@ -43,116 +42,41 @@ In this lab, you will be guided through the following task:
     <copy>ssh -i private_key_file opc@new_compute_instance_ip</copy>
      ```
 
-2. Setup folder to house imported sample data
-
-    a. Create folder
-
-    ```bash
-    <copy>mkdir automl</copy>
-     ```
-
-    b. Go into folder
-
-    ```bash
-    <copy>cd automl</copy>
-     ```
-
-3. Download sample files
-
-    ```bash
-    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/Ukv1g5qyvJK6asGvVoksGkUDIu8KaoVfmbhBzpmbRahXu7a2EmaVTJev2a-lHvUa/n/mysqlpm/b/mysql_customer_orders/o/black_friday.zip</copy>
-     ```
-
-4. Unzip black_friday.zip file which will generate 2 files
-
-    ```bash
-    <copy>unzip black_friday.zip</copy>
-     ```
-
-5. List all of the files
-
-    ```bash
-    <copy>ls -l</copy>
-    ```
-
-    ![bucket file list](./images/list_data_files.png "datafiles list")
-
-## Task 2: Create ML Data
-
-1. If not already connected to MySQL then connect to MySQL using the MySQL Shell client tool with the following command:
+2. If not already connected to MySQL then connect to MySQL using the MySQL Shell client tool with the following command:
 
     ```bash
     <copy>mysqlsh -uadmin -p -h 10.0.1... --sql -P3306</copy>
     ```
 
     ![MySQL Shell Connect](./images/mysql-shell-login.png " mysql shell login")
-2. To Create the Machine Learning schema and tables on the MySQL HeatWave DB System perform the following steps :
 
-    a. Create the ML database :
-
-    ```bash
-    <copy>CREATE DATABASE heatwaveml_bench;</copy>
-    ```
-
-    b. Set new database as default :
+3. Set default database
 
     ```bash
     <copy>USE heatwaveml_bench;</copy>
     ```
 
-    c. Create train table :
+4. Make sure the train and test tables
 
     ```bash
-    <copy>CREATE TABLE black_friday_train (Gender VARCHAR(255), Age VARCHAR(255), Occupation VARCHAR(255), City_Category VARCHAR(255), Stay_In_Current_City_Years VARCHAR(255), Marital_Status VARCHAR(255), Product_Category_1 VARCHAR(255), Product_Category_2 VARCHAR(255), Product_Category_3 VARCHAR(255), Purchase FLOAT);</copy>
+    <copy>show tables;</copy>
     ```
 
-    d. Create test table :
+    ![mysql train test"t](./images/mysql-train-test.png " mysql train test")
 
-    ```bash
-    <copy>CREATE TABLE black_friday_test LIKE black_friday_train;</copy>
-    ```
-
-    e. Load train table
-
-    ```bash
-    <copy>\js</copy>
-    ```
-
-    ```bash
-    <copy>util.importTable("black_friday_train.csv",{table: "black_friday_train", dialect: "csv-unix", skipRows:1})</copy>
-    ```
-
-    f. Load test table
-
-    ```bash
-    <copy>util.importTable("black_friday_test.csv",{table: "black_friday_test", dialect: "csv-unix", skipRows:1})</copy>
-    ```
-
-    ```bash
-    <copy>\sql</copy>
-    ```
-
-3. View the content of  your machine Learning schema (ml_data)
-
-    ```bash
-    <copy>show tables; </copy>
-    ```
-
-## Task 3: Train the machine learning model
-
-1. Train the model using ML_TRAIN. Since this is a classification dataset, the classification task is specified to create a classification model:
+5. Train the model using ML_TRAIN. Since this is a classification dataset, the classification task is specified to create a classification model:
 
     ```bash
     <copy>CALL sys.ML_TRAIN('heatwaveml_bench.black_friday_train', 'Purchase', JSON_OBJECT('task', 'regression'), @model_black_friday);</copy>
     ```
 
-2. When the training operation finishes, the model handle is assigned to the @model_black_friday session variable, and the model is stored in your model catalog. You can view the entry in your model catalog using the following query, where user1 is your MySQL account name:
+6. When the training operation finishes, the model handle is assigned to the @model_black_friday session variable, and the model is stored in your model catalog. You can view the entry in your model catalog using the following query, where user1 is your MySQL account name:
 
     ```bash
     <copy>SELECT model_id, model_handle, train_table_name FROM ML_SCHEMA_admin.MODEL_CATALOG;</copy>
     ```
 
-3. Load the model into HeatWave ML using ML\_MODEL\_LOAD routine:
+7. Load the model into HeatWave ML using ML\_MODEL\_LOAD routine:
 
     a.  Reset model handle variable
 
@@ -166,7 +90,7 @@ In this lab, you will be guided through the following task:
     <copy>CALL sys.ML_MODEL_LOAD(@model_black_friday, NULL);</copy>
     ```
 
-## Task 4: Predict and Explain for test table
+## Task 2: Predict and Explain for test table
 
 1. Make a prediction for the test table  data using the ML\_PREDICT\_ROW routine.
 
@@ -174,7 +98,7 @@ In this lab, you will be guided through the following task:
     <copy>CALL sys.ML_PREDICT_TABLE('heatwaveml_bench.black_friday_test', @model_black_friday,'heatwaveml_bench.black_predictions',NULL);</copy>
     ```
 
-2. To retrieve the some of the predictions
+2. To retrieve some of the predictions
 
     ```bash
     <copy>SELECT * FROM heatwaveml_bench.black_predictions limit 5\G</copy>
@@ -192,7 +116,7 @@ In this lab, you will be guided through the following task:
     <copy>SELECT * FROM heatwaveml_bench.black_explanations limit 5\G</copy>
     ```
 
-## Task 5: Score your machine learning model to assess its reliability and unload the model
+## Task 3: Score your machine learning model to assess its reliability and unload the model
 
 1. Score the model using ML\_SCORE to assess the model's reliability. This example uses the accuracy metric, which is one of the many scoring metrics supported by HeatWave ML.
 
