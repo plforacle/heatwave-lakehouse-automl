@@ -6,17 +6,17 @@ To load data from Object Storage to HeatWave, you need to specify the location o
 
 1. Use [Resource Principal](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/resource-principal-enable.html) - It is recommended that you use Resource Principal-based approach for access to data in Object Storage for more sensitive data as this approach is more secure.
 
-2. Use [Pre-Authenticated Request URLs (PARs)](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/usingpreauthenticatedrequests.htm) - If you choose to use PARs, we recommend that you use read-only PARs with Lakehouse and specify short expiration dates for your PARs. The expiration dates should align with your loading schedule. 
+2. Use [Pre-Authenticated Request URLs (PARs)](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/usingpreauthenticatedrequests.htm) - If you choose to use PARs, we recommend that you use read-only PARs with Lakehouse and specify short expiration dates for your PARs. The expiration dates should align with your loading schedule.
 
 Since we are using a sample data set, we will make use of PAR in this LiveLab. We already have several tables available in HeatWave that have been loaded from MySQL.
 
-We will now load the DELIVERY_ORDERS table from the Object Store. This is a large table with 30 million rows and contains information about the delivery vendor for orders.
+We will now load the Black Friday tables from the Object Store.
 
 ### Objectives
 
 - Create PAR Link for the  "delivery_order" files
 - Run Autoload to infer the schema and estimate capacity
-- Load complete DELIVERY table from Object Store into MySQL HeatWave
+- Load complete black_friday tables from Object Store into MySQL HeatWave
 
 ### Prerequisites
 
@@ -24,30 +24,39 @@ We will now load the DELIVERY_ORDERS table from the Object Store. This is a larg
 - Some Experience with MySQL Shell
 - Completed Lab 5
 
-## Task 1: Create the PAR Link for the "delivery_order" files
+## Task 1: Create the PAR Link for the "black\_friday" files
 
-1. Create a PAR URL for all of the **order folder** objects with a prefix
+1. Create a PAR URL for the **black\_friday\_train.csv** object
 
     - a. From your OCI console, navigate to your lakehouse-files bucket in OCI.
-    - b. Select the folder —> order and click the three vertical dots.
+    - b. Select the black\_friday\_train.csv file and click the three vertical dots.
 
-        ![Select  folder](./images/storage-delivery-orders-folder.png "storage delivery order folder")
+        ![Select  black_friday_train.csv](./images/storage-delivery-orders-folder.png "storage black_friday_train.csv")
 
     - c. Click on ‘Create Pre-Authenticated Request’
-    - d. Click to select the ‘Objects with prefix’ option under ‘PreAuthentcated Request Target’.
-    - e. Leave the ‘Access Type’ option as-is: ‘Permit object reads on those with the specified prefix’.
-    - g. Click to select the ‘Enable Object Listing’ checkbox.
+    - d. Click to select the ‘Object’ option under ‘PreAuthentcated Request Target’.
+    - e. Leave the ‘Access Type’ option as-is: ‘Permit object reads’.
     - h. Click the ‘Create Pre-Authenticated Request’ button.
 
        ![Create Folder PAR](./images/storage-delivery-orders-folder-page.png "storage delivery order folder page")
 
     - i. Click the ‘Copy’ icon to copy the PAR URL.
     - j. Save the generated PAR URL; you will need it later.
-    - k. You can test the URL out by pasting it in your browser. It should return output like this:
-
-        ![List folder file](./images/storage-delivery-orders-folder-list.png "storage delivery order folder list")
 
 2. Save the generated PAR URL; you will need it in the next task
+
+3. Do the same to create a PAR URL for the **black\_friday\_test.csv** object
+
+    - a. From your OCI console, navigate to your lakehouse-files bucket in OCI.
+    - b. Select the black\_friday\_test.csv file and click the three vertical dots.
+    - c. Click on ‘Create Pre-Authenticated Request’
+    - d. Click to select the ‘Object’ option under ‘PreAuthentcated Request Target’.
+    - e. Leave the ‘Access Type’ option as-is: ‘Permit object reads’.
+    - h. Click the ‘Create Pre-Authenticated Request’ button.
+    - i. Click the ‘Copy’ icon to copy the PAR URL.
+    - j. Save the generated PAR URL; you will need it later.
+
+4. Save the generated PAR URL; you will need it in the next task
 
 ## Task 2: Connect to your MySQL HeatWave system using Cloud Shell
 
@@ -73,44 +82,40 @@ We will now load the DELIVERY_ORDERS table from the Object Store. This is a larg
 
     ![Databse Schemas](./images/list-schemas-after.png "list schemas after")
 
-4. Change to the mysql\_customer\_orders database
-
-    Enter the following command at the prompt
+4. Create the Machine Learning schema 
 
     ```bash
-    <copy>USE mysql_customer_orders;</copy>
+    <copy>CREATE DATABASE heatwaveml_bench;</copy>
     ```
 
-5. To see a list of the tables available in the mysql\_customer\_orders schema
-
-    Enter the following command at the prompt
+5. Set new database as default
 
     ```bash
-    <copy>show tables;</copy>
+    <copy>use heatwaveml_bench;</copy>
     ```
 
     You are now ready to use Autoload to load a table from the object store into MySQL HeatWave
 
-## Task 3: Run Autoload to infer the schema and estimate capacity required for the DELIVERY table in the Object Store
+## Task 3: Run Autoload to infer the schema and estimate capacity for the black\_friday tables in the Object Store
 
-1. The DELIVERY information for orders is contained in the delivery-orders-*1*.csv files in object store for which we have created a PAR URL in the earlier task. Enter the following commands one by one and hit Enter.
+1. The data is contained in the black\_friday\_train.csv file in object store for which we have created a PAR URL in the earlier task. Enter the following commands one by one and hit Enter.
 
 2. This sets the schema we will load table data into. Don’t worry if this schema has not been created. Autopilot will generate the commands for you to create this schema if it doesn’t exist.
 
     ```bash
-    <copy>SET @db_list = '["mysql_customer_orders"]';</copy>
+    <copy>SET @db_list = '["heatwaveml_bench"]';</copy>
     ```
 
 3. This sets the parameters for the table name we want to load data into and other information about the source file in the object store. Substitute the **(PAR URL)** below with the one you generated in the previous task:
 
     ```bash
     <copy>SET @dl_tables = '[{
-    "db_name": "mysql_customer_orders",
+    "db_name": "heatwaveml_bench",
     "tables": [{
-        "table_name": "delivery_orders",
+        "table_name": "black_friday_train",
         "dialect": {
             "format": "csv",
-            "field_delimiter": "\\t",
+            "field_delimiter": ",",
             "record_delimiter": "\\r\\n",
             "has_header": true,
             "is_strict_mode": false},
@@ -142,70 +147,95 @@ We will now load the DELIVERY_ORDERS table from the Object Store. This is a larg
     - c. Auto schema sampling samples a small number of rows from the table and determines the number of rows in the table and the size of the table.
     - d. Auto provisioning determines how much memory would be needed to load this table into HeatWave and how much time loading this data take.
 
+
+    ![Dryrun script](./images/load-script-dryrun.png "load script dryrun")
+
 7. Autoload also generated a statement lke the one below. Execute this statement now.
 
     ```bash
     <copy>SELECT log->>"$.sql" AS "Load Script" FROM sys.heatwave_autopilot_report WHERE type = "sql" ORDER BY id;</copy>
     ```
 
-    ![Dryrun script](./images/load-script-dryrun.png "load script dryrun")
 
 8. The execution result contains the SQL statements needed to create the table and then load this table data from the Object Store into HeatWave.
 
-    ![Create Table](./images/create-delivery-order.png "create delivery order")
+    ![create train table](./images/create-delivery-order.png "create train table")
 
-9. Copy the **CREATE TABLE** command from the results. It should look like the following example
-
-    ![autopilot create table with no field name](./images/create-table-no-fieldname.png "autopilot create table with no field name")
+9. Copy the **CREATE TABLE** command from the results.
 
 10. Execute the **CREATE TABLE** command to create the delivery_orders table.
 
 11. The create command and result should look lie this
 
-    ![Delivery Table create](./images/create-delivery-table.png "create delivery table")
+    ![ result train table](./images/create-delivery-table.png "result train table")
 
-## Task 4: Load complete DELIVERY table from Object Store into MySQL HeatWave
+## Task 4: Load the black\_friday\_train table from Object Store into MySQL HeatWave
 
 1. Run this command to see the table structure created.
 
     ```bash
-    <copy>desc delivery_orders;</copy>
+    <copy>desc black_friday_train;</copy>
     ```
 
-    ![Delivery Table structure](./images/describe-delivery-table.png "describe delivery table")
+    ![black_friday_train Table structure](./images/describe-delivery-table.png "black_friday_train Table structure")
 
 2. Now load the data from the Object Store into the ORDERS table.
 
     ```bash
-    <copy> ALTER TABLE `mysql_customer_orders`.`delivery_orders` SECONDARY_LOAD; </copy>
+    <copy> ALTER TABLE `heatwaveml_bench`.`black_friday_train` SECONDARY_LOAD; </copy>
     ```
 
 3. Check the number of rows loaded into the table.
 
     ```bash
-    <copy>select count(*) from delivery_orders;</copy>
+    <copy>select count(*) from black_friday_train;</copy>
     ```
 
-    The DELIVERY table has 34 million rows.
+    The black\_friday\_train table has 116698 rows.
 
 4. View a sample of the data in the table.
 
     ```bash
-    <copy>select * from delivery_orders limit 5;</copy>
+    <copy>select * from black_friday_train limit 5;</copy>
     ```
 
-5. Join the delivery_orders table with other table in the schema
+## Task 5: Create and Load the black\_friday\_test table from Object Store into MySQL HeatWave
+
+1. Create the black\_friday\_test table by copying the following command and replace the  (PAR URL) with the black\_friday\_test.csv PAR URL  you saved earlier. It will be the source for the black\_friday\_test.csv table:
 
     ```bash
-    <copy> select o.* ,d.*  from  orders o
-    join delivery_orders d on o.order_id = d.order_id
-    where o.order_id = 93751524; </copy>
+    <copy>CREATE TABLE `heatwaveml_bench`.`black_friday_test`( `col_1` varchar(1) NOT NULL COMMENT 'RAPID_COLUMN=ENCODING=VARLEN', `Age` varchar(5) NOT NULL COMMENT 'RAPID_COLUMN=ENCODING=VARLEN', `Occupation` tinyint unsigned NOT NULL, `City_Category` varchar(1) NOT NULL COMMENT 'RAPID_COLUMN=ENCODING=VARLEN', `Stay_In_Current_City_Years` varchar(2) NOT NULL COMMENT 'RAPID_COLUMN=ENCODING=VARLEN', `Marital_Status` tinyint unsigned NOT NULL, `Product_Category_1` tinyint unsigned NOT NULL, `Product_Category_2` tinyint unsigned NOT NULL, `Product_Category_3` tinyint unsigned NOT NULL, `Purchase` mediumint unsigned NOT NULL) ENGINE=lakehouse SECONDARY_ENGINE=RAPID ENGINE_ATTRIBUTE='{"file": [{"par": "(PAR URL)"}], "dialect": {"format": "csv", "has_header": true, "is_strict_mode": false, "field_delimiter": ",", "record_delimiter": "\\r\\n"}}';</copy>
     ```
 
-6. Output of steps 6 through 5
-    ![Add data to table](./images/load-delivery-table.png "load delivery table")
 
-7. Your DELIVERY table is now ready to be used in queries with other tables.
+    - It should look like the following example 
+    (Be sure to include the PAR Link inside at of quotes("")):
+
+        ![autopilot create table with no field name](./images/create-table-no-fieldname.png "autopilot create table with no field name")
+
+2. Run this command to see the table structure created:
+
+    ```bash
+    <copy>desc black_friday_test;</copy>
+    ```
+
+3. Load the data from the Object Store into the black_friday_test table.
+
+    ```bash
+    <copy>ALTER TABLE /*+ AUTOPILOT_DISABLE_CHECK */ `heatwaveml_bench`.`black_friday_test` SECONDARY_LOAD</copy>
+    ```
+
+4. Once Autoload completes, check the number of rows loaded into the table.
+
+    ```bash
+    <copy>select count(*) from black_friday_test;</copy>
+    ```
+
+5. View a sample of the data in the table.
+
+    ```bash
+    <copy>select * from black_friday_test limit 5;</copy>
+    ```
 
 You may now **proceed to the next lab**
 
