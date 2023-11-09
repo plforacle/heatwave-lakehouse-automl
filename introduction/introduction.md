@@ -17,13 +17,22 @@ _Estimated Time:_
 
 MySQL HeatWave is a massively parallel, high performance, in-memory query accelerator for Oracle MySQL Database Service that accelerates MySQL performance by orders of magnitude for analytics and mixed workloads. It is the only service that enables customers to run OLTP and OLAP workloads directly from their MySQL database without the need of ETL process. MySQL Autopilot uses advanced machine-learning techniques to automates the database lifecycle operations including provisioning, data loading, query processing, and error handling. This minimizes manual administrative work and further improves HeatWave’s usability, performance, and scalability. MySQL HeatWave is also integrated with other Oracle Cloud services such as Data Integration Service and Oracle Analytics Cloud to provide a seamless end-to-end integration.
 
-#### MySQL HeatWave One Database for OLTP, OLAP, ML & Lakehouse 
+#### MySQL HeatWave One Database for OLTP, OLAP, AutoML & Lakehouse 
 
-
-  ![lakehouse diagram](./images/mysql-heatwave-intro.png "MySQL HeatWave Lakehouse")
+  ![lakehouse diagram](./images/mysql-heatwave-intro-2.png "MySQL HeatWave Lakehouse")
 
 ### Objectives
 
+#### Migrating from Eureka On-Premise to OCI / HeatWave Build Black-Friday ML process
+
+1. Build and Load Heatwave and Add Cluster
+2. Build Bastion App Server and compare OLTP and OLAP query executions
+3. Add Black Friday data for AUTOML creation into Objecto Storage Bucket
+4. Load Lakehouse with Object Sotrage Data and Create AUTOML Machine Learning Model
+5. Make Black Friday Predictions and use OCI for more insight
+6. Review ecommerce application and discuss improvement from Black-Friday ML Insight.
+
+![lakehouse diagram](./images/mysql-heatwave-intro-3.png "MySQL HeatWave Lakehouse")
 In this lab, you will be guided through the following steps:
 
 - Create MySQL Database for HeatWave (DB System) instance
