@@ -38,13 +38,13 @@ In this lab, you will be guided through the following tasks:
 3. Get the Application files  from Object Stogage
 
     ```bash
-    <copy>sudo wget  https://objectstorage.us-ashburn-1.oraclecloud.com/p/bpmpXfQwwE3iTqiVOb-G2oCD3zBFKuxlvtPHsvCMOXHWkV51r3Yapowf0N0g4Dna/n/mysqlpm/b/mysql_customer_orders/o/orders_web.zip</copy>
+    <copy>sudo wget  https://objectstorage.us-ashburn-1.oraclecloud.com/p/L9dof_K9Rzplf59I4PBFbnZpn20EdvzlYWqAxtff0PRiLlmRtXPpfOmf-p4CR_3R/n/mysqlpm/b/mysql_customer_orders/o/orders_web_no_coupon.zip</copy>
     ```
 
-4. Unnzip orders_web.zip file
+4. Unnzip orders_web_no_coupon.zip file
 
     ```bash
-    <copy>sudo unzip orders_web.zip </copy>
+    <copy>sudo unzip orders_web_no_coupon.zip </copy>
     ```
 
 5. Open the config.php file 
