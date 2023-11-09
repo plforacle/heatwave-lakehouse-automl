@@ -11,7 +11,7 @@ Overall this workshop will show you how easy it is to create and manage MySQL He
 _Estimated Time:_ 
   
 - Labs 1 through 5  : 1 hour
-- Labs 1 through 10 : 2.5 hours
+- Labs 1 through 12 : 3 hours
 
 ### About Product/Technology
 

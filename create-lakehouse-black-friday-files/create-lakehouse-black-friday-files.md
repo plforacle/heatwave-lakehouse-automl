@@ -26,13 +26,19 @@ A set of files have been created for you to use in this workshop. You will creat
 
 2. Setup folder to house imported sample data
 
-    a. Create folder
+    a. Go to home directory
+
+    ```bash
+    <copy>cd ~ </copy>
+     ```
+
+    b. Create folder in home directory
 
     ```bash
     <copy>mkdir lakehouse</copy>
      ```
 
-    b. Go into folder
+    c. Go into folder
 
     ```bash
     <copy>cd lakehouse</copy>

@@ -219,10 +219,10 @@ We will now load the Black Friday tables from the Object Store.
     <copy>desc black_friday_test;</copy>
     ```
 
-3. Load the data from the Object Store into the black_friday_test table.
+3. Load the data from the Object Store into the black\_friday\_test table.
 
     ```bash
-    <copy>ALTER TABLE /*+ AUTOPILOT_DISABLE_CHECK */ `heatwaveml_bench`.`black_friday_test` SECONDARY_LOAD</copy>
+    <copy>ALTER TABLE /*+ AUTOPILOT_DISABLE_CHECK */ `heatwaveml_bench`.`black_friday_test` SECONDARY_LOAD;</copy>
     ```
 
 4. Once Autoload completes, check the number of rows loaded into the table.
