@@ -70,9 +70,13 @@
           "filename": "../../visualize-oac/visualize-oac.md"
         },
 
-
         {
-          "title": "Lab 12: Stop OCI Services",
+          "title": "Lab 12: (Bonus) Add LAMP Application",
+          "filename": "../../add_lamp-ecom/add_lamp-ecom.md"
+        },
+          
+        {
+          "title": "Lab 13: Stop OCI Services",
           "filename": "../../stop-services/stop-services.md"
         },
 
