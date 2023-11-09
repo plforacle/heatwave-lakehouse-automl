@@ -58,51 +58,46 @@
         {
           "title": "Lab 9: (Bonus) Create Oracle Analytics Cloud Instance",
           "filename": "../../create-oac-instance/create-oac-instance.md"  
-        },
-           
+        },          
+
         {
-          "title": "Lab 10: (Bonus) Create datasets in Oracle Analytics Cloud ",
-          "filename": "../../create-oac-dataset/create-oac-dataset.md"
+          "title": "Lab 10: (Bonus) Build a real-time dashboard in Oracle Analytics Cloud with MySQL HeatWave ",
+          "filename": "../../create-dashboard-oac/create-dashboard-oac.md"
         },
 
         {
-          "title": "Lab 11: (Bonus) Build a real-time dashboard in Oracle Analytics Cloud with MySQL HeatWave ",
-          "filename": "../../visualize-oac/visualize-oac.md"
-        },
-
-        {
-          "title": "Lab 12: (Bonus) Add LAMP Application",
+          "title": "Lab 11: (Bonus) Add LAMP Application",
           "filename": "../../add_lamp-ecom/add_lamp-ecom.md"
         },
              
         {
-          "title": "Lab 13: (Bonus) Upload data to Object Storage for HeatWave Lakehouse",
+          "title": "Lab 12: (Bonus) Upload data to Object Storage for HeatWave Lakehouse",
           "filename": "../../create-lakehouse-black-friday-files/create-lakehouse-black-friday-files.md"  
         },
 
         {
-          "title": "Lab 14: (Bonus) Load CSV data from OCI Object Store",
+          "title": "Lab 13: (Bonus) Load CSV data from OCI Object Store",
           "filename": "../../load-black-friday-data/load-black-friday-data.md"  
         },
+
+        {
+          "title": "Lab 14: (Bonus) Create and Use HeatWave AutoML Model - black_friday  ",
+          "filename": "../../do-heatwave-ml/do-heatwave-ml.md"
+        }, 
+
 
         {
           "title": "Lab 15: (Bonus) Create and Use HeatWave AutoML Model - black_friday  ",
           "filename": "../../do-heatwave-ml/do-heatwave-ml.md"
         }, 
 
-
         {
-          "title": "Lab 16: (Bonus) Create and Use HeatWave AutoML Model - black_friday  ",
-          "filename": "../../do-heatwave-ml/do-heatwave-ml.md"
-        }, 
-
-        {
-          "title": "Lab 17: (Bonus)  Develop MySQL HeatWave Apps with Oracle APEX",
+          "title": "Lab 16: (Bonus)  Develop MySQL HeatWave Apps with Oracle APEX",
           "filename": "../../apex-heatwave/apex-heatwave.md"
         }, 
         
         {
-          "title": "Lab 18: Stop OCI Services",
+          "title": "Lab 17: Stop OCI Services",
           "filename": "../../stop-services/stop-services.md"
         },
 

@@ -58,25 +58,20 @@
         {
           "title": "Lab 9: (Bonus) Create Oracle Analytics Cloud Instance",
           "filename": "../../create-oac-instance/create-oac-instance.md"  
-        },
-           
+        },          
+
         {
-          "title": "Lab 10: (Bonus) Create datasets in Oracle Analytics Cloud ",
-          "filename": "../../create-oac-dataset/create-oac-dataset.md"
+          "title": "Lab 10: (Bonus) Build a real-time dashboard in Oracle Analytics Cloud with MySQL HeatWave ",
+          "filename": "../../create-dashboard-oac/create-dashboard-oac.md"
         },
 
         {
-          "title": "Lab 11: (Bonus) Build a real-time dashboard in Oracle Analytics Cloud with MySQL HeatWave ",
-          "filename": "../../visualize-oac/visualize-oac.md"
-        },
-
-        {
-          "title": "Lab 12: (Bonus) Add LAMP Application",
+          "title": "Lab 11: (Bonus) Add LAMP Application",
           "filename": "../../add_lamp-ecom/add_lamp-ecom.md"
         },
           
         {
-          "title": "Lab 13: Stop OCI Services",
+          "title": "Lab 12: Stop OCI Services",
           "filename": "../../stop-services/stop-services.md"
         },
 
