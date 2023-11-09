@@ -76,7 +76,9 @@ In this lab, you will be guided through the following task:
     <copy>SELECT model_id, model_handle, train_table_name FROM ML_SCHEMA_admin.MODEL_CATALOG;</copy>
     ```
 
-7. Load the model into HeatWave ML using ML\_MODEL\_LOAD routine:
+## Task 2: Make  Predictions and Explain Predictions
+
+1. Load the model into HeatWave ML using ML\_MODEL\_LOAD routine:
 
     a.  Reset model handle variable
 
@@ -90,21 +92,64 @@ In this lab, you will be guided through the following task:
     <copy>CALL sys.ML_MODEL_LOAD(@model_black_friday, NULL);</copy>
     ```
 
-## Task 2: Create AutoML Prediction to Analyze in OAC
+2. Make a prediction for a single row of data using the ML_PREDICT_ROW routine.
 
-1. Make a prediction for the test table  data using the ML\_PREDICT\_ROW routine.
+    ```bash
+    <copy>SELECT sys.ML\_PREDICT\_ROW(JSON_OBJECT(
+        "col_1", "M", 
+        "Age","26-35", 
+        "Occupation", "20", 
+        "City_Category", "A", 
+        "Stay_In_Current_City_Years", "4+", 
+        "Marital_Status", "1", 
+        "Product_Category_1", "5", 
+        "Product_Category_2", "9", 
+        "Product_Category_3", "14", 
+        "Purchase", "6981"), 
+        @model_black_friday, NULL);</copy>
+    ```
+
+    Based on the feature inputs that were provided, the model predicts that purchase value will be lower this year. The feature values used to make the prediction are also shown.
+
+    ![mysql predict row](./images/mysql-predict-row.png " mysql predict row")
+
+3. Now, generate an explanation for the same row of data using the ML_EXPLAIN_ROW.
+
+    ```bash
+    <copy>SELECT sys.ML_EXPLAIN_ROW(JSON_OBJECT(
+        "col_1", "M", 
+        "Age","26-35", 
+        "Occupation", "20", 
+        "City_Category", "A", 
+        "Stay_In_Current_City_Years", "4+", 
+        "Marital_Status", "1", 
+        "Product_Category_1", "5", 
+        "Product_Category_2", "9", 
+        "Product_Category_3", "14", 
+        "Purchase", "6981"), 
+        @model_black_friday, 
+        JSON_OBJECT('prediction_explainer', 'permutation_importance'));</copy>
+    ```
+
+    The attribution values show which features contributed most to the prediction
+
+    ![mysql explain row](./images/mysql-explain-row.png " mysql explain row")
+
+
+
+4. Make a prediction for the test table  data using the ML\_PREDICT\_ROW routine. This table can be used to gather more decision making information using OAC.
 
     ```bash
     <copy>CALL sys.ML_PREDICT_TABLE('heatwaveml_bench.black_friday_test', @model_black_friday,'heatwaveml_bench.black_predictions',NULL);</copy>
     ```
 
-2. To retrieve some of the predictions
+5. To retrieve some of the predictions
 
     ```bash
     <copy>SELECT * FROM heatwaveml_bench.black_predictions limit 5\G</copy>
     ```
 
-3. Unload the model using ML\_MODEL\_UNLOAD:
+6. Unload the model using ML\_MODEL\_UNLOAD:
 
     ```bash
     <copy>CALL sys.ML_MODEL_UNLOAD(@model_black_friday);</copy>
