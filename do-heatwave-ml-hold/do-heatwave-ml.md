@@ -90,7 +90,7 @@ In this lab, you will be guided through the following task:
     <copy>CALL sys.ML_MODEL_LOAD(@model_black_friday, NULL);</copy>
     ```
 
-## Task 2: Create AutoML Prediction to Analyze in OAC
+## Task 2: Predict and Explain for test table
 
 1. Make a prediction for the test table  data using the ML\_PREDICT\_ROW routine.
 
@@ -102,6 +102,32 @@ In this lab, you will be guided through the following task:
 
     ```bash
     <copy>SELECT * FROM heatwaveml_bench.black_predictions limit 5\G</copy>
+    ```
+
+3. Generate an explanation for the same row of data using the ML\_EXPLAIN\_ROW routine to understand how the prediction was made:
+
+    ```bash
+    <copy> CALL sys.ML_EXPLAIN_TABLE('heatwaveml_bench.black_friday_test', @model_black_friday, 'heatwaveml_bench.black_explanations', JSON_OBJECT('prediction_explainer', 'permutation_importance'));</copy>
+    ```
+
+4. To retrieve the some of the expalnations
+
+    ```bash
+    <copy>SELECT * FROM heatwaveml_bench.black_explanations limit 5\G</copy>
+    ```
+
+## Task 3: Score your machine learning model to assess its reliability and unload the model
+
+1. Score the model using ML\_SCORE to assess the model's reliability. This example uses the accuracy metric, which is one of the many scoring metrics supported by HeatWave ML.
+
+    ```bash
+    <copy> CALL sys.ML_SCORE('heatwaveml_bench.black_friday_test', 'Purchase', @model_black_friday, 'r2', @score_black_friday, null);</copy>
+    ```
+
+2. To retrieve the computed score, query the @score session variable
+
+    ```bash
+    <copy>SELECT @score_black_friday;</copy>
     ```
 
 3. Unload the model using ML\_MODEL\_UNLOAD:
