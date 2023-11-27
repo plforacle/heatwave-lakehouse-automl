@@ -92,10 +92,10 @@ In this lab, you will be guided through the following task:
     <copy>CALL sys.ML_MODEL_LOAD(@model_black_friday, NULL);</copy>
     ```
 
-2. Make a prediction for a single row of data using the ML_PREDICT_ROW routine.
+2. Make a prediction for a single row of data using the ML\_PREDICT\_ROW routine.
 
     ```bash
-    <copy>SELECT sys.ML\_PREDICT\_ROW(JSON_OBJECT(
+    <copy>SELECT sys.ML_PREDICT_ROW(JSON_OBJECT(
         "col_1", "M", 
         "Age","26-35", 
         "Occupation", "20", 
