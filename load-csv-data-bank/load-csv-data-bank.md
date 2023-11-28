@@ -1,4 +1,4 @@
-# Load CSV data from OCI Object Store
+# Load CSV data from OCI Object Store to Lakehouse - bank
 
 ## Introduction
 
@@ -24,12 +24,12 @@ We will now load the Black Friday tables from the Object Store.
 - Some Experience with MySQL Shell
 - Completed Lab 5
 
-## Task 1: Create the PAR Link for the "black\_friday" files
+## Task 1: Create the PAR Link for the "bank-full" files
 
-1. Create a PAR URL for the **black\_friday\_train.csv** object
+1. Create a PAR URL for the **bank-full.csv** object
 
     - a. From your OCI console, navigate to your lakehouse-files bucket in OCI.
-    - b. Select the black\_friday\_train.csv file and click the three vertical dots.
+    - b. Select the bank-full.csv file and click the three vertical dots.
 
         ![Select  black_friday_train.csv](./images/storage-delivery-orders-folder.png "storage black_friday_train.csv")
 
@@ -45,10 +45,10 @@ We will now load the Black Friday tables from the Object Store.
 
 2. Save the generated PAR URL; you will need it in the next task
 
-3. Do the same to create a PAR URL for the **black\_friday\_test.csv** object
+3. Do the same to create a PAR URL for the **bank.csv** object
 
     - a. From your OCI console, navigate to your lakehouse-files bucket in OCI.
-    - b. Select the black\_friday\_test.csv file and click the three vertical dots.
+    - b. Select the bank.csv file and click the three vertical dots.
     - c. Click on ‘Create Pre-Authenticated Request’
     - d. Click to select the ‘Object’ option under ‘PreAuthentcated Request Target’.
     - e. Leave the ‘Access Type’ option as-is: ‘Permit object reads’.
@@ -96,9 +96,9 @@ We will now load the Black Friday tables from the Object Store.
 
     You are now ready to use Autoload to load a table from the object store into MySQL HeatWave
 
-## Task 3: Run Autoload to infer the schema and estimate capacity for the black\_friday tables in the Object Store
+## Task 3: Run Autoload to infer the schema and estimate capacity for the bank tables in the Object Store
 
-1. The data is contained in the black\_friday\_train.csv file in object store for which we have created a PAR URL in the earlier task. Enter the following commands one by one and hit Enter.
+1. The data is contained in the bank-full.csv file in object store for which we have created a PAR URL in the earlier task. Enter the following commands one by one and hit Enter.
 
 2. This sets the schema we will load table data into. Don’t worry if this schema has not been created. Autopilot will generate the commands for you to create this schema if it doesn’t exist.
 
@@ -112,7 +112,7 @@ We will now load the Black Friday tables from the Object Store.
     <copy>SET @dl_tables = '[{
     "db_name": "heatwaveml_bench",
     "tables": [{
-        "table_name": "black_friday_train",
+        "table_name": "bank_train",
         "dialect": {
             "format": "csv",
             "field_delimiter": ",",
@@ -163,18 +163,18 @@ We will now load the Black Friday tables from the Object Store.
 
 9. Copy the **CREATE TABLE** command from the results.
 
-10. Execute the **CREATE TABLE** command to create the delivery_orders table.
+10. Execute the **CREATE TABLE** command to create the bank_train table.
 
-11. The create command and result should look lie this
+11. The create command and result should look like this
 
     ![ result train table](./images/create-delivery-table.png "result train table")
 
-## Task 4: Load the black\_friday\_train table from Object Store into MySQL HeatWave
+## Task 4: Load the bank_train table from Object Store into MySQL HeatWave
 
 1. Run this command to see the table structure created.
 
     ```bash
-    <copy>desc black_friday_train;</copy>
+    <copy>desc bank_train;</copy>
     ```
 
     ![black_friday_train Table structure](./images/describe-delivery-table.png "black_friday_train Table structure")
@@ -182,26 +182,26 @@ We will now load the Black Friday tables from the Object Store.
 2. Now load the data from the Object Store into the ORDERS table.
 
     ```bash
-    <copy> ALTER TABLE `heatwaveml_bench`.`black_friday_train` SECONDARY_LOAD; </copy>
+    <copy> ALTER TABLE `heatwaveml_bench`.`bank_train` SECONDARY_LOAD; </copy>
     ```
 
 3. Check the number of rows loaded into the table.
 
     ```bash
-    <copy>select count(*) from black_friday_train;</copy>
+    <copy>select count(*) from bank_train;</copy>
     ```
 
-    The black\_friday\_train table has 116698 rows.
+    The bank\_train table has 116698 rows.
 
 4. View a sample of the data in the table.
 
     ```bash
-    <copy>select * from black_friday_train limit 5;</copy>
+    <copy>select * from bank_train limit 5;</copy>
     ```
 
 ## Task 5: Create and Load the black\_friday\_test table from Object Store into MySQL HeatWave
 
-1. Create the black\_friday\_test table by copying the following command and replace the  (PAR URL) with the black\_friday\_test.csv PAR URL  you saved earlier. It will be the source for the black\_friday\_test.csv table:
+1. Create the bank\_test table by copying the following command and replace the  (PAR URL) with the bank.csv PAR URL  you saved earlier. It will be the source for the bank_train table:
 
     ```bash
     <copy>CREATE TABLE `heatwaveml_bench`.`black_friday_test`( `col_1` varchar(1) NOT NULL COMMENT 'RAPID_COLUMN=ENCODING=VARLEN', `Age` varchar(5) NOT NULL COMMENT 'RAPID_COLUMN=ENCODING=VARLEN', `Occupation` tinyint unsigned NOT NULL, `City_Category` varchar(1) NOT NULL COMMENT 'RAPID_COLUMN=ENCODING=VARLEN', `Stay_In_Current_City_Years` varchar(2) NOT NULL COMMENT 'RAPID_COLUMN=ENCODING=VARLEN', `Marital_Status` tinyint unsigned NOT NULL, `Product_Category_1` tinyint unsigned NOT NULL, `Product_Category_2` tinyint unsigned NOT NULL, `Product_Category_3` tinyint unsigned NOT NULL, `Purchase` mediumint unsigned NOT NULL) ENGINE=lakehouse SECONDARY_ENGINE=RAPID ENGINE_ATTRIBUTE='{"file": [{"par": "(PAR URL)"}], "dialect": {"format": "csv", "has_header": true, "is_strict_mode": false, "field_delimiter": ",", "record_delimiter": "\\r\\n"}}';</copy>
@@ -216,7 +216,7 @@ We will now load the Black Friday tables from the Object Store.
 2. Run this command to see the table structure created:
 
     ```bash
-    <copy>desc black_friday_test;</copy>
+    <copy>desc bank_test;</copy>
     ```
 
 3. Load the data from the Object Store into the black\_friday\_test table.

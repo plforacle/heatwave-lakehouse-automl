@@ -1,4 +1,4 @@
-# Upload data to Object Storage for HeatWave Lakehouse
+# Upload data to Object Storage for HeatWave Lakehouse - bank
 
 ## Introduction
 
@@ -47,13 +47,13 @@ A set of files have been created for you to use in this workshop. You will creat
 3. Download sample files
 
     ```bash
-    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/Ukv1g5qyvJK6asGvVoksGkUDIu8KaoVfmbhBzpmbRahXu7a2EmaVTJev2a-lHvUa/n/mysqlpm/b/mysql_customer_orders/o/black_friday.zip</copy>
+    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/ul8q1vESm9DMNlFQ92uPUT-PcuRdTcPw75sTqp16Jrli-e9ZIH_YADm-LrG6TUyG/n/mysqlpm/b/mysql_customer_orders/o/bank.zip</copy>
      ```
 
-4. Unzip black_friday.zip file which will generate 2 different files
+4. Unzip bank.zip file which will generate 2 different files
 
     ```bash
-    <copy>unzip black_friday.zip</copy>
+    <copy>unzip bank.zip</copy>
      ```
 
 5. List the files
@@ -107,23 +107,23 @@ A set of files have been created for you to use in this workshop. You will creat
 
     ![bucket file list](./images/datafiles-list.png "datafiles list")
 
-2. Add the black\_friday\_train.csv file to the storage bucket by modifying the following statement with the example below. You must replace the **(PAR URL)** value with the saved generated **PAR URL** from the previous Task.
+2. Add the bank-full.csv file to the storage bucket by modifying the following statement with the example below. You must replace the **(PAR URL)** value with the saved generated **PAR URL** from the previous Task.
 
     ```bash
-    <copy>curl -X PUT --data-binary '@black_friday_train.csv' (PAR URL)black_friday_train.csv</copy>
+    <copy>curl -X PUT --data-binary '@bank-full.csv' (PAR URL)bank-full.csv</copy>
      ```
 
      **Example**  
-     curl -X PUT --data-binary '@black\_friday\_train.csv' https://objectstorage.us-ashburn-1.oraclecloud.com/p/RfXc55AGpLSu26UgqbmGxbWZwh4hPhLkVWYMg4f5pNerQx_1NghgSKJHLzE4IWxH/n/******/b/lakehouse-files/o/black_friday_train.csv
+     curl -X PUT --data-binary '@bank-full.csv' https://objectstorage.us-ashburn-1.oraclecloud.com/p/RfXc55AGpLSu26UgqbmGxbWZwh4hPhLkVWYMg4f5pNerQx_1NghgSKJHLzE4IWxH/n/******/b/lakehouse-files/o/bank-full.csv
 
-3. Add the @black\_friday\_test.csv file to the storage bucket by modifying the following statement with the example below. You must replace the **(PAR URL)** value with the saved generated **PAR URL** from the previous Task.
+3. Add the bank.csv file to the storage bucket by modifying the following statement with the example below. You must replace the **(PAR URL)** value with the saved generated **PAR URL** from the previous Task.
 
     ```bash
-    <copy>curl -X PUT --data-binary '@black_friday_test.csv' (PAR URL)black_friday_test.csv</copy>
+    <copy>curl -X PUT --data-binary '@bank.csv' (PAR URL)bank.csv</copy>
      ```
 
      **Example**  
-     curl -X PUT --data-binary '@black\_friday\_test.csv' https://objectstorage.us-ashburn-1.oraclecloud.com/p/RfXc55AGpLSu26UgqbmGxbWZwh4hPhLkVWYMg4f5pNerQx_1NghgSKJHLzE4IWxH/n/******/b/lakehouse-files/o/black_friday_test.csv
+     curl -X PUT --data-binary '@bank.csv' https://objectstorage.us-ashburn-1.oraclecloud.com/p/RfXc55AGpLSu26UgqbmGxbWZwh4hPhLkVWYMg4f5pNerQx_1NghgSKJHLzE4IWxH/n/******/b/lakehouse-files/o/bank.csv
 
 4. Your **lakehouse-files** bucket should look like this:
     ![cloud storage bucket](./images/lakehouse-bucket.png "lakehouse bucket")

@@ -41,18 +41,18 @@
         },
              
         {
-          "title": "Lab 6: (Bonus) Upload data to Object Storage for HeatWave Lakehouse - black-friday",
-          "filename": "../../create-lakehouse-files-black-friday/create-lakehouse-files-black-friday.md"  
+          "title": "Lab 6: (Bonus) Upload data to Object Storage for HeatWave Lakehouse - bank",
+          "filename": "../../create-lakehouse-files-bank/create-lakehouse-files-bank.md"  
         },
 
         {
-          "title": "Lab 7: (Bonus) Load CSV data from OCI Object Store to Lakehouse - black-friday",
-          "filename": "../../load-csv-data-black-friday/load-csv-data-black-friday.md"  
+          "title": "Lab 7: (Bonus) Load CSV data from OCI Object Store to Lakehouse - bank",
+          "filename": "../../load-csv-data-bank/load-csv-data-bank.md"  
         },
 
         {
-          "title": "Lab 8: (Bonus) Create and Use HeatWave AutoML Model - black_friday  ",
-          "filename": "../../do-heatwave-ml-black-friday/do-heatwave-ml-black-friday.md"
+          "title": "Lab 8: (Bonus) Create and Use HeatWave AutoML Model - bank  ",
+          "filename": "../../do-heatwave-ml-bank/do-heatwave-ml-bank.md"
         }, 
 
         {
@@ -61,8 +61,8 @@
         },          
 
         {
-          "title": "Lab 10: (Bonus) Build a real-time dashboard in Oracle Analytics Cloud with MySQL HeatWave  - black_friday",
-          "filename": "../../create-dashboard-oac-black-friday/create-dashboard-oac-black-friday.md"
+          "title": "Lab 10: (Bonus) Build a real-time dashboard in Oracle Analytics Cloud with MySQL HeatWave  - bank",
+          "filename": "../../create-dashboard-oac-bank/create-dashboard-oac-bank.md"
         },
 
         {

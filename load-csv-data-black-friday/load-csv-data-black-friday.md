@@ -14,7 +14,7 @@ We will now load the Black Friday tables from the Object Store.
 
 ### Objectives
 
-- Create PAR Link for the  "delivery_order" files
+- Create PAR Link for the  "black_friday" files
 - Run Autoload to infer the schema and estimate capacity
 - Load complete black_friday tables from Object Store into MySQL HeatWave
 
@@ -38,7 +38,7 @@ We will now load the Black Friday tables from the Object Store.
     - e. Leave the ‘Access Type’ option as-is: ‘Permit object reads’.
     - h. Click the ‘Create Pre-Authenticated Request’ button.
 
-       ![Create Folder PAR](./images/storage-delivery-orders-folder-page.png "storage delivery order folder page")
+       ![Create Folder PAR](./images/storage-delivery-orders-folder-page.png "storage  folder page")
 
     - i. Click the ‘Copy’ icon to copy the PAR URL.
     - j. Save the generated PAR URL; you will need it later.
@@ -159,15 +159,15 @@ We will now load the Black Friday tables from the Object Store.
 
 8. The execution result contains the SQL statements needed to create the table and then load this table data from the Object Store into HeatWave.
 
-    ![create train table](./images/create-delivery-order.png "create train table")
+    ![create train table](./images/create-black-friday-train.png "create train table")
 
 9. Copy the **CREATE TABLE** command from the results.
 
-10. Execute the **CREATE TABLE** command to create the delivery_orders table.
+10. Execute the **CREATE TABLE** command to create the black-friday table.
 
 11. The create command and result should look lie this
 
-    ![ result train table](./images/create-delivery-table.png "result train table")
+    ![ result train table](./images/create-table-black-friday.png "result train table")
 
 ## Task 4: Load the black\_friday\_train table from Object Store into MySQL HeatWave
 
@@ -177,9 +177,9 @@ We will now load the Black Friday tables from the Object Store.
     <copy>desc black_friday_train;</copy>
     ```
 
-    ![black_friday_train Table structure](./images/describe-delivery-table.png "black_friday_train Table structure")
+    ![black_friday_train Table structure](./images/describe-balck-friday-table.png "black_friday_train Table structure")
 
-2. Now load the data from the Object Store into the ORDERS table.
+2. Now load the data from the Object Store file into the table.
 
     ```bash
     <copy> ALTER TABLE `heatwaveml_bench`.`black_friday_train` SECONDARY_LOAD; </copy>

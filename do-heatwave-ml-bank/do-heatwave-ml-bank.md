@@ -1,4 +1,4 @@
-# Build HeatWave ML with SQL
+# Create and Use HeatWave AutoML Model - bank
 
 ![mysql heatwave](./images/mysql-heatwave-logo.jpg "mysql heatwave")
 
