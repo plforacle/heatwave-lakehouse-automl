@@ -54,6 +54,16 @@ Using APEX, developers can quickly develop and deploy compelling apps that solve
    
     **Example** https://sql.dbtools.us-ashburn-1.oci.oraclecloud.com/20201005/ords/ocid1.databasetoolsconnection.oc1.iad.amaaaaaao27h4wiamnbgbmuznwvg4nenu4j7nzbecnvpmzgs2fkgiugwueyq/_/sql
 
+## Task 3 SQL command for APEX
+
+1. Prediction by Age and  Purchase
+
+    ```bash
+    <copy>SELECT age, sum(purchase) total_purchase, sum(Prediction) total_prediction FROM heatwaveml_bench.black_predictions group by age order by total_purchase desc;</copy>
+    ```
+
+
+
 ## Learn More
 
 How to use the Oracle Database Tools Service to provide MySQL data to APEX - [APEX and the MySQL Database Service](https://asktom.oracle.com/pls/apex/asktom.search?oh=18245).

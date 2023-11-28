@@ -69,6 +69,13 @@
           "title": "Lab 11: (Bonus) Add LAMP Application",
           "filename": "../../add_lamp-ecom/add_lamp-ecom.md"
         },
+        
+        {
+          "title": "Lab 16: (Bonus)  Develop MySQL HeatWave Apps with Oracle APEX",
+          "filename": "../../apex-heatwave/apex-heatwave.md"
+        }, 
+
+
           
         {
           "title": "Lab 12: Stop OCI Services",
