@@ -63,6 +63,8 @@ Using APEX, developers can quickly develop and deploy compelling apps that solve
     ```
 
 
+    ![MDS](./images/apex-prediction.png "start apex deploy")
+
 
 ## Learn More
 
