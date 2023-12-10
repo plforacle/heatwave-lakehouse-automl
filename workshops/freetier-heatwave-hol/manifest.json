@@ -71,14 +71,12 @@
         },
         
         {
-          "title": "Lab 16: (Bonus)  Develop MySQL HeatWave Apps with Oracle APEX",
+          "title": "Lab 12: (Bonus)  Develop MySQL HeatWave Apps with Oracle APEX",
           "filename": "../../apex-heatwave/apex-heatwave.md"
         }, 
 
-
-          
         {
-          "title": "Lab 12: Stop OCI Services",
+          "title": "Lab 13: Stop OCI Services",
           "filename": "../../stop-services/stop-services.md"
         },
 
