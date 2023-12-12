@@ -88,7 +88,7 @@ In this lab, you will be guided through the following tasks:
 8. Click 'View VCN' to display the created VCN
     ![Created VCN](./images/wizard-view-vcn.png "display the created")
 
-## Task 2: Configure security list to allow MySQL incoming connections
+## Task 3: Configure security list to allow MySQL incoming connections
 
 1. On heatwave-vcn page under 'Subnets in lakehouse Compartment', click  '**private subnet-heatwave-vcn**'
      ![VCN Details](./images/vcn-details.png "Show VCN Details")

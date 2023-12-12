@@ -1,4 +1,4 @@
-# Create Datasets in Oracle Analytics Cloud with MySQL HeatWave
+# Create Datasets in Oracle Analytics Cloud with MySQL HeatWave - orders
 
 ![mysql heatwave](./images/mysql-heatwave-logo.jpeg " mysql heatwave")
 
