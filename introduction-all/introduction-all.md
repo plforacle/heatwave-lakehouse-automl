@@ -21,6 +21,11 @@ MySQL HeatWave is a massively parallel, high performance, in-memory query accele
 
   ![lakehouse diagram](./images/mysql-heatwave-intro-2.png "MySQL HeatWave Lakehouse")
 
+#### MySQL HeatWave Lakehouse in a Nutshell
+
+  ![Lakehouse in a Nutshell](./images/mysql-heatwave-intro-nutshell.png "Lakehouse in a Nutshell")
+
+
 ### Objectives
 
 #### Migrating from Eureka On-Premise to OCI / HeatWave Build Black-Friday ML process
