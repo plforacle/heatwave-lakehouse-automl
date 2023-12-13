@@ -70,7 +70,7 @@ In this lab, you will be guided through the following task:
     <copy>CALL sys.ML_TRAIN('heatwaveml_bench.black_friday_train', 'Purchase', JSON_OBJECT('task', 'regression'), @model_black_friday);</copy>
     ```
 
-6. When the training operation finishes, the model handle is assigned to the @model_black_friday session variable, and the model is stored in your model catalog. You can view the entry in your model catalog using the following query, where user1 is your MySQL account name:
+6. When the training operation finishes, the model handle is assigned to the @model\_black\_friday session variable, and the model is stored in your model catalog. You can view the entry in your model catalog using the following query, where user1 is your MySQL account name:
 
     ```bash
     <copy>SELECT model_id, model_handle, train_table_name FROM ML_SCHEMA_admin.MODEL_CATALOG;</copy>
@@ -96,7 +96,7 @@ In this lab, you will be guided through the following task:
 
     ```bash
     <copy>SELECT sys.ML_PREDICT_ROW(JSON_OBJECT(
-        "col_1", "M", 
+        "Gender", "M", 
         "Age","26-35", 
         "Occupation", "20", 
         "City_Category", "A", 
@@ -113,11 +113,11 @@ In this lab, you will be guided through the following task:
 
     ![mysql predict row](./images/mysql-predict-row.png " mysql predict row")
 
-3. Now, generate an explanation for the same row of data using the ML_EXPLAIN_ROW.
+3. Now, generate an explanation for the same row of data using the ML\_EXPLAIN\_ROW.
 
     ```bash
     <copy>SELECT sys.ML_EXPLAIN_ROW(JSON_OBJECT(
-        "col_1", "M", 
+        "Gender", "M", 
         "Age","26-35", 
         "Occupation", "20", 
         "City_Category", "A", 
@@ -143,13 +143,41 @@ In this lab, you will be guided through the following task:
     <copy>CALL sys.ML_PREDICT_TABLE('heatwaveml_bench.black_friday_test', @model_black_friday,'heatwaveml_bench.black_predictions',NULL);</copy>
     ```
 
-5. To retrieve some of the predictions
+5. Retrieve some of the predictions individually
 
     ```bash
     <copy>SELECT * FROM heatwaveml_bench.black_predictions limit 5\G</copy>
     ```
 
-6. Unload the model using ML\_MODEL\_UNLOAD:
+6. Retrieve some of the predictions in row display
+
+    a. Use Javascript
+
+    ```bash
+    <copy>\js</copy>
+
+    ```
+
+    b. Set MySQL Shell configuration option resultFormat to table
+
+    ```bash
+    <copy>shell.options.set('resultFormat','tabbed')</copy>
+
+    ```
+
+    b. List 5 rows
+
+    ```bash
+    <copy>session.sql("SELECT * FROM heatwaveml_bench.black_predictions limit 5")</copy>
+
+    ```
+
+7. Unload the model using ML\_MODEL\_UNLOAD:
+
+    ```bash
+    <copy>\sql</copy>
+
+    ```
 
     ```bash
     <copy>CALL sys.ML_MODEL_UNLOAD(@model_black_friday);</copy>
