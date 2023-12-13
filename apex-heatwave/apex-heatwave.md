@@ -163,7 +163,7 @@ In this lab, you will be guided through the following task:
 
     ![Developer Services SQL Worksheet](./images/OCI-developer-services-sql-worksheets.png "OCI-developer-services-sql-worksheets ")
 
-2. Select the lakehouse compartment and the created **HW-MovieHub-Connection**
+2. Select the lakehouse compartment and the created **HW-Connection**
 
 3. You can run SQL queries, in the SQL Worksheet.
 
@@ -245,7 +245,7 @@ In this lab, you will be guided through the following task:
     b. Name the APEX workspace
 
     ```bash
-    <copy> heatwave-movies </copy>
+    <copy> heatwave </copy>
     ```
 
     c. Set an Admin user and password for the workspace
@@ -297,7 +297,7 @@ In this lab, you will be guided through the following task:
 4. Give the REST service a name
 
     ```bash
-    <copy> MovieHub-moviesdb </copy>
+    <copy> heatwave </copy>
     ```
 
 5. For Endpoint URL, Introduce the Endpoint URL **without** the "**`/_/sql`**" at the end. Notice the help message.
@@ -308,7 +308,7 @@ In this lab, you will be guided through the following task:
 
     ![rest services credentials](./images/rest-service-credentials.png "rest-service-credentials ")
 
-8. If previous steps were performed correctly, you should see a successful connection. Select the default database **movies**
+8. If previous steps were performed correctly, you should see a successful connection. Select the default database **heatwaveml_bench**
 
     ![rest services successful connection](./images/rest-service-success.png "rest-service-success ")
 

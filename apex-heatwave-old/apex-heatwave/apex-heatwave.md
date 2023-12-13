@@ -43,7 +43,7 @@ In this lab, you will be guided through the following task:
 
     ![Create Vault](./images/create-vault.png "create-vault ")
 
-    b. Select the movies compartment
+    b. Select the lakehouse compartment
 
     c. Give the vault a name
 
