@@ -269,8 +269,8 @@ In this lab, you will be guided through the following task:
 
     | Attributes | Value |
     | --------| -------:|
-    | Name | mysqlheatwave |
-    | Static ID | mysqlheatwave |
+    | Name | heatwave |
+    | Static ID | heatwave |
     | Authentication Type | Oracle Cloud Infraestructure (OCI) |
     | OCI User ID | **< YourUserOCID >** |
     | OCI Private Key | **< ContentOfYourSavedPrivateKey >** |
@@ -297,7 +297,7 @@ In this lab, you will be guided through the following task:
 4. Give the REST service a name
 
     ```bash
-    <copy> heatwave </copy>
+    <copy>heatwave</copy>
     ```
 
 5. For Endpoint URL, Introduce the Endpoint URL **without** the "**`/_/sql`**" at the end. Notice the help message.
