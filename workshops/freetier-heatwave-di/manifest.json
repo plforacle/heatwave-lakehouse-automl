@@ -29,44 +29,44 @@
           "title": "Lab 3: Add HeatWave Cluster to the DB sytem",
           "filename": "../../add-heatwave-cluster/add-heatwave-cluster.md"
         },
-                
+        
         {
-          "title": "Lab 4: Load data into HeatWave Cluster ",
+          "title": "Lab 4: Create Oracle Analytics Cloud Instance",
+          "filename": "../../create-oac-instance/create-oac-instance.md"  
+        }, 
+
+        {
+          "title": "Lab 5: Load data into HeatWave Cluster ",
           "filename": "../../load-db-heatwave-cluster/load-db-heatwave-cluster.md"
         },
 
         {
-          "title": "Lab 5: Develop MySQL HeatWave App with LAMP",
+          "title": "Lab 6: Develop MySQL HeatWave App with LAMP",
           "filename": "../../develop/develop.md"
         },
              
         {
-          "title": "Lab 6: (Bonus) Upload data to Object Storage for HeatWave Lakehouse - black-friday",
+          "title": "Lab 7: Upload data to Object Storage for HeatWave Lakehouse - black-friday",
           "filename": "../../create-lakehouse-files-black-friday/create-lakehouse-files-black-friday.md"  
         },
 
         {
-          "title": "Lab 7: (Bonus) Load CSV data from OCI Object Store to Lakehouse - black-friday",
+          "title": "Lab 8: Load CSV data from OCI Object Store to Lakehouse - black-friday",
           "filename": "../../load-csv-data-black-friday/load-csv-data-black-friday.md"  
         },
 
         {
-          "title": "Lab 8: (Bonus) Create and Use HeatWave AutoML Model - black_friday  ",
+          "title": "Lab 9: Create and Use HeatWave AutoML Model - black_friday  ",
           "filename": "../../do-heatwave-ml-black-friday/do-heatwave-ml-black-friday.md"
-        }, 
+        },       
 
         {
-          "title": "Lab 9: (Bonus) Create Oracle Analytics Cloud Instance",
-          "filename": "../../create-oac-instance/create-oac-instance.md"  
-        },          
-
-        {
-          "title": "Lab 10: (Bonus) Build a real-time dashboard in Oracle Analytics Cloud with MySQL HeatWave  - black_friday",
+          "title": "Lab 10: Build a real-time dashboard in Oracle Analytics Cloud with MySQL HeatWave  - black_friday",
           "filename": "../../create-dashboard-oac-black-friday/create-dashboard-oac-black-friday.md"
         },
 
         {
-          "title": "Lab 11: (Bonus) Add LAMP Application",
+          "title": "Lab 11: Add LAMP Application",
           "filename": "../../add_lamp-ecom/add_lamp-ecom.md"
         },
         
