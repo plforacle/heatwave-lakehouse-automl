@@ -33,7 +33,7 @@ MySQL HeatWave is a massively parallel, high performance, in-memory query accele
 2. Build Bastion App Server and compare OLTP and OLAP query executions
 3. Add Black Friday data for AUTOML creation into Objecto Storage Bucket
 4. Load Lakehouse with Object Sotrage Data and Create AUTOML Machine Learning Model
-5. Make Black Friday Predictions and use OCI for more insight
+5. Make Black Friday Predictions and use OAC and APEX for more insight
 6. Review ecommerce application and discuss improvement from Black-Friday ML Insight.
 
 ![lakehouse diagram](./images/mysql-heatwave-intro-3.png "MySQL HeatWave Lakehouse")
