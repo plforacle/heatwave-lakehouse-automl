@@ -64,7 +64,7 @@ In this lab, you will be guided through the following task:
 
     ![mysql train test"t](./images/mysql-train-test.png " mysql train test")
 
-5. Train the model using ML_TRAIN. Since this is a classification dataset, the classification task is specified to create a classification model:
+5. Train the model using ML_TRAIN. Since this is a regression dataset, the regression task is specified to create a regression model:
 
     ```bash
     <copy>CALL sys.ML_TRAIN('heatwaveml_bench.black_friday_train', 'Purchase', JSON_OBJECT('task', 'regression'), @model_black_friday);</copy>
