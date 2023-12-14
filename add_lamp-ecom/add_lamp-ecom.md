@@ -58,7 +58,7 @@ In this lab, you will be guided through the following tasks:
     - Save the orders_web/config.php
     ![MDS](./images/eurekaweb-config.png " ")
 
-## Task 4: Run the e-commerce Application
+## Task 2: Run the e-commerce Application
 
 1. From your local machine connect to heatwave-client IP Address/orders_web/login.php 
 
