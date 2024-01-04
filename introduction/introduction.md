@@ -49,8 +49,8 @@ In this lab, you will be guided through the following steps:
 - Run queries in HeatWave and MySQL and see the performance improvement in HeatWave!
 - Create LAMP test application
 - Stop OCI services
-- **Bonus** Lakehouse, AutoML, and OAC Labs
 
+- **Bonus** Lakehouse, AutoML, and OAC Labs
 
 ### Prerequisites
 
