@@ -15,7 +15,7 @@ _Estimated Time:_
 
 ### About Product/Technology
 
-MySQL HeatWave is a massively parallel, high performance, in-memory query accelerator for Oracle MySQL Database Service that accelerates MySQL performance by orders of magnitude for analytics and mixed workloads. It is the only service that enables customers to run OLTP and OLAP workloads directly from their MySQL database without the need of ETL process. MySQL Autopilot uses advanced machine-learning techniques to automates the database lifecycle operations including provisioning, data loading, query processing, and error handling. This minimizes manual administrative work and further improves HeatWave’s usability, performance, and scalability. MySQL HeatWave is also integrated with other Oracle Cloud services such as Data Integration Service and Oracle Analytics Cloud to provide a seamless end-to-end integration.
+MySQL HeatWave is a massively parallel, high performance, in-memory query accelerator for Oracle MySQL Database Service that accelerates MySQL performance by orders of magnitude for analytics and mixed workloads. It is the only service that enables customers to run OLTP and OLAP workloads directly from their MySQL database without the need of ETL process. MySQL Autopilot uses advanced machine-learning techniques to automate the database lifecycle operations including provisioning, data loading, query processing, and error handling. This minimizes manual administrative work and further improves HeatWave’s usability, performance, and scalability. MySQL HeatWave is also integrated with other Oracle Cloud services such as Data Integration Service and Oracle Analytics Cloud to provide a seamless end-to-end integration.
 
 #### MySQL HeatWave One Database for OLTP, OLAP, AutoML & Lakehouse 
 
@@ -27,7 +27,7 @@ MySQL HeatWave is a massively parallel, high performance, in-memory query accele
 
 ### Objectives
 
-#### Migrating from Eureka On-Premise to OCI / HeatWave Build Black-Friday ML process
+#### Migrate from Eureka On-Premise to OCI and Build HeatWave Black-Friday ML
 
 1. Build and Load Heatwave and Add Cluster
 2. Build Bastion App Server and compare OLTP and OLAP query executions
