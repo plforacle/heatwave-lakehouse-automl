@@ -313,7 +313,7 @@ In this lab, you will be guided through the following task:
     ![rest services successful connection](./images/rest-service-success.png "rest-service-success ")
 
 
-## Task 7 SQL command for APEX
+## Task 8 SQL command for APEX
 
 1. Prediction by Age and  Purchase
 
